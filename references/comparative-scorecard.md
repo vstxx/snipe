@@ -12,6 +12,37 @@ improvise the definitions below.
 
 ## The strict metric
 
+The scorecard is computed at **two levels**, so a reader can see both *how much
+material was examined* and *how much of what was examined actually carried
+checkable facts*. Report both — a low extraction yield is itself a finding (a
+prolific target that publishes a lot but says little that is checkable).
+
+### Source-level funnel (how much was looked at)
+
+Work from the source manifest (every collected item — see
+`source-manifest-schema.md`).
+
+- **Sources considered** = every distinct item collected in the window across all
+  tracks (each post, page, report, filing, statement), **before** deduplication.
+  This is the total volume examined.
+- **Sources deduped** = items remaining after collapsing `duplicate_group`s
+  (syndicated reposts, cross-posted press releases, language duplicates). The base
+  of distinct material.
+- **Sources with claims (extracted)** = deduped items with
+  `detected_claim_count ≥ 1` — items that actually yielded at least one checkable
+  factual claim. Everything else (pure advocacy/opinion, PR, event notices,
+  greetings, images with no factual assertion) is examined but carries nothing to
+  verify.
+- **Extraction yield** = `Sources with claims / Sources considered` — what share
+  of collected material was factually checkable. Report it with the raw counts,
+  e.g. "Extraction yield 3% (11 of 338 items carried checkable claims)".
+
+Never silently drop the gap between *considered* and *with claims*: that gap is
+the honest answer to "you looked at N things but only checked a few" — surface it,
+don't hide it.
+
+### Claim-level metric (how much held up)
+
 Work from the full claim ledger (the raw CSV — every extracted claim).
 
 - **Extracted** = every claim on the ledger.
@@ -37,6 +68,11 @@ denominator: 6 Deferred, 2 Unverifiable." Never show the percentage without the
 counts and denominator — a bare "18%" is not comparable or checkable.
 
 Also report, as secondary lines (not the headline):
+- **Source funnel** = `Sources considered → deduped → with claims`, plus the
+  **extraction yield**. This shows how much raw material sits behind the claim
+  ledger; a large considered-vs-with-claims gap is what explains a target with
+  hundreds of posts producing only a handful of checkable claims. Always show the
+  three raw counts, not just the yield percentage.
 - **Unsupported rate** = `Unsupported / Assessed` — high unsupported is a
   different problem (thin sourcing) from high adverse (active inaccuracy/spin).
 - **Coverage** = `Assessed / Extracted` — how much of the ledger was actually
@@ -91,9 +127,24 @@ fixed, machine-readable summary line, written to
 surfaced in the report. Fixed fields, in order:
 
 ```
-audit_date, target, sector, extracted, assessed, misleading, contradicted,
-adverse_rate, unsupported_rate, coverage, band, composite_score, skill_version
+audit_date, target, sector, sources_considered, sources_deduped,
+sources_with_claims, extraction_yield, extracted, assessed, misleading,
+contradicted, adverse_rate, unsupported_rate, coverage, band, composite_score,
+skill_version
 ```
+
+The first four data fields after `sector` are the **source funnel**
+(`sources_considered`, `sources_deduped`, `sources_with_claims`,
+`extraction_yield`); the rest are the claim-level metric. `extraction_yield` is
+`sources_with_claims / sources_considered` as a fraction. When a run genuinely has
+no source manifest (a single pasted text with no collection stage), set the funnel
+fields to the item count itself (considered = deduped = with_claims = 1 if it
+carried a claim) rather than leaving them blank, so the column count stays fixed.
+
+**Schema note:** this row now has 17 fields (the four source-funnel fields were
+added after `sector`). Bump `skill_version` when you change the schema so 17-field
+rows are never silently lined up against older 13-field rows — a differing
+`skill_version` is the signal not to compare column-by-column.
 
 Tell the user this line is the unit of cross-audit comparison: collecting these
 rows across companies is what makes the sector benchmark real. The skill does not

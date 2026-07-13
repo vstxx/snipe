@@ -79,13 +79,13 @@ aggregate pattern report.
 LinkedIn, X/Twitter, YouTube, press page, product pages, investor relations,
 docs, or other public profiles.
 
-**Default limit:** the **last 4 months** of public material (trailing window from
-today), not a fixed item count. Keep a safety cap (≈150 items after dedup) so a
+**Default limit:** the **last 12 months** of public material (trailing window from
+today), not a fixed item count. Keep a safety cap (≈450 items after dedup) so a
 prolific company doesn't blow up the run; if the cap is hit, say so and prioritize
 by risk/materiality within the window. Items with unknown dates are kept but
 flagged as unconfirmed-in-window. An explicit user limit or window overrides this.
 
-**Behavior:** collect the last 4 months of public materials from and about the
+**Behavior:** collect the last 12 months of public materials from and about the
 company. Source priority: official / company-owned sources first, then official
 social profiles, then official reports / docs / filings, then reputable interviews
 and media, and finally lower-confidence third-party context. Extract claims about
@@ -106,7 +106,7 @@ and transparently:
   **roster** of who was included and who was excluded and why (see report-format
   §7b).
 - **Same window, per-person cap.** Each representative is collected over the same
-  trailing 4-month window, with a per-person item cap so the roster doesn't
+  trailing 12-month window, with a per-person item cap so the roster doesn't
   dominate the run.
 - **Cross-check.** Compare what representatives say publicly against the company's
   official line, and against each other. Surface conflicts, claims a representative
@@ -152,12 +152,12 @@ implying completeness.
 bio, LinkedIn, X/Twitter, interviews, publications, conference pages, speeches,
 or other public/professional sources.
 
-**Default limit:** the **last 4 months** of public material (trailing window from
-today), not a fixed item count. Keep a safety cap (≈75 items after dedup); if hit,
+**Default limit:** the **last 12 months** of public material (trailing window from
+today), not a fixed item count. Keep a safety cap (≈225 items after dedup); if hit,
 say so and prioritize by risk/materiality. Items with unknown dates are kept but
 flagged as unconfirmed-in-window. An explicit user limit or window overrides this.
 
-**Behavior:** collect the last 4 months of public professional / public statements
+**Behavior:** collect the last 12 months of public professional / public statements
 by or about the person. Focus on public claims, professional statements, role / title
 claims, policy claims, market / economic claims, technical claims, quotes,
 interviews, publications, and company-related claims. Produce a person-level
@@ -204,8 +204,8 @@ subset, noting what was set aside.
 |---|---|---|
 | Article Snipe | 1 item | No |
 | Site / Feed Snipe | last 20 public items | Yes |
-| Company Snipe | last 4 months (cap ≈150 items) + representative network | Yes |
-| Person Snipe | last 4 months (cap ≈75 items) | Yes |
+| Company Snipe | last 12 months (cap ≈450 items) + representative network | Yes |
+| Person Snipe | last 12 months (cap ≈225 items) | Yes |
 | Adaptive Snipe | inferred, stated | Usually |
 
 Respect an explicit user limit over any default. If the connector returns fewer

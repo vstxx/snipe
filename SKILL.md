@@ -57,10 +57,10 @@ outputs, and constraints are in `references/sniping-modes.md`.
   risk map, credibility assessment. **Automatically extends to the company's
   representative network** — board, C-suite/directors, official spokespeople, and
   brand ambassadors — and cross-checks whether what they say publicly matches the
-  company's official line. Default: the **last 4 months** of public material (with
+  company's official line. Default: the **last 12 months** of public material (with
   a safety cap), not a fixed item count.
 - **Person Snipe** — a public person (+ optional public/professional profiles).
-  Audit public and professional claims only. Default: the **last 4 months** of
+  Audit public and professional claims only. Default: the **last 12 months** of
   public material (with a safety cap). Never collect private or sensitive personal
   data (see privacy rules).
 - **Adaptive Snipe** — a free-form instruction ("last 100 posts from this

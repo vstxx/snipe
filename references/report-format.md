@@ -142,11 +142,12 @@ reader, but the top claim risks and detailed verification are the point.
 - Target: [name / URL]
 - Goal: [the audit goal in operational terms, or "none — neutral audit"]
 - Window / limit: [for Company & Person: the trailing time window used, default
-  "last 4 months (from [date] to today)"; for Site/Feed: item count. State the
+  "last 12 months (from [date] to today)"; for Site/Feed: item count. State the
   safety cap if one was hit, and note items with unknown dates that couldn't be
   confirmed inside the window.]
 - Collected items: [n]
 - Deduplicated items: [n]
+- Items with checkable claims: [n — source-level "extracted"; feeds the §7g source funnel]
 - Sources used: [brief]
 - Date range: [earliest → latest published_at]
 - Focus: [claim focus, or "all checkable claims"]
@@ -257,6 +258,9 @@ where relevant — this table is the whole-run view of the same discipline.]
 [The standardized, cross-audit-comparable summary. Fixed definitions so separate
 runs line up.]
 - Sector: [how the company was classified, and on what basis]
+- Source funnel: [Sources considered N → deduped N → with claims N] · Extraction
+  yield [X% = with-claims / considered]. [One line on the gap: e.g. "327 of 338
+  items were advocacy/PR/duplicates with no checkable claim."]
 - Adverse rate: [X% — (Misleading + Contradicted) / Assessed], with counts:
   [n Misleading, n Contradicted, of N assessed]
 - Excluded from denominator: [n Deferred, n Unverifiable]

@@ -89,10 +89,10 @@ unknown — a missing date is itself an audit finding, not a blank to be filled.
 
 - Article Snipe: 1 item (no connector).
 - Site / Feed Snipe: last 20 public items.
-- Company Snipe: last 4 months of public material (safety cap ≈150 items after
+- Company Snipe: last 12 months of public material (safety cap ≈450 items after
   dedup), plus the representative network (board / directors / spokespeople /
   ambassadors) over the same window with a per-person cap.
-- Person Snipe: last 4 months of public material (safety cap ≈75 items after dedup).
+- Person Snipe: last 12 months of public material (safety cap ≈225 items after dedup).
 - Adaptive Snipe: infer a reasonable limit/window and state it.
 
 Respect an explicit user limit over the default. If the connector returns fewer

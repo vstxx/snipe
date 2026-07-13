@@ -22,7 +22,7 @@ name that maps to several distinct entities). Otherwise infer, and for Adaptive
 mode state the inferred scope and limit before executing.
 
 For **Company and Person modes the default scope is a trailing time window — the
-last 4 months from today — not a fixed item count.** Compute the window boundary,
+last 12 months from today — not a fixed item count.** Compute the window boundary,
 filter by `published_at`, and keep a safety cap on item volume (see sniping-modes.md)
 so a busy target doesn't overwhelm the run; if the cap bites, prioritize by
 risk/materiality and say so. Items whose date can't be established are kept but
@@ -43,7 +43,7 @@ Find the right sources for the mode:
   reputable interviews and media. **Also the representative network** — identify
   the board, C-suite / directors, official spokespeople, and brand ambassadors
   from official sources, cap the roster by seniority / public prominence, and
-  collect each one's public company-related statements over the same 4-month
+  collect each one's public company-related statements over the same 12-month
   window (per-person cap). Apply Person-mode privacy rules to every individual
   (public/professional only). Record who was included and who was excluded and
   why — this becomes the roster in report §7b.
